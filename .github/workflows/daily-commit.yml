@@ -1,0 +1,28 @@
+name: Daily Green Commit
+
+on:
+  schedule:
+    - cron: "30 6 * * *" # runs daily at 6:30 AM UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  green-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update timestamp
+        run: |
+          echo "Last active: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" > LAST_ACTIVE.md
+          echo "" >> LAST_ACTIVE.md
+          echo "<!-- This file is auto-updated daily to keep the contribution graph green -->" >> LAST_ACTIVE.md
+
+      - name: Commit and push
+        run: |
+          git config user.name "amey1234444"
+          git config user.email "ameybhagwatkar01@gmail.com"
+          git add LAST_ACTIVE.md
+          git diff --cached --quiet && echo "No changes" || (git commit -m "chore: daily activity $(date -u '+%Y-%m-%d')" && git push)
