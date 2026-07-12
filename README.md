@@ -13,7 +13,7 @@
 ```yaml
 name:      Amey Bhagwatkar
 roles:     [Full-Stack Developer, Backend Engineer, DevOps/Cloud, ML/AI]
-education: Computer Science
+education: Electronics and Telecommunication Eng.
 currently:
   building: "AI-powered coding agents & microservice platforms"
   learning: "Large Language Models, Distributed Systems, Cloud-Native Architecture"
